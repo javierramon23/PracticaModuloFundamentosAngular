@@ -11,14 +11,9 @@
       | Un clic sobre el autor debería navegar a su colección de posts.          |
       |========================================================================-->
       <span class="name blink-font">{{ post.author.name }}</span>
-
-      <!--=======================================================================|
-      | Blue Path                                                                |
-      |==========================================================================|
-      | Una vez tengas creado el pipe FromNowPipe, úsalo con la fecha de         |
-      | publicación.                                                             |
-      |========================================================================-->
-      <span class="date">{{ post.publicationDate }}</span>
+      
+      <!-- Aplicamos el PIPE fromNow que hemos implementado -->
+      <span class="date">Fiestaaa{{ post.publicationDate | fromNow }}</span>
 
     </div>
   </div>
