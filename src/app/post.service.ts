@@ -1,5 +1,6 @@
 import { Injectable, Inject } from '@angular/core';
-import { HttpClient } from '@angular/common/http';
+// Importamos HttpParams para poder personalozar/parametrizar las peticiones HTTP.
+import { HttpClient, HttpParams } from '@angular/common/http';
 
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/operator/map';
@@ -14,25 +15,19 @@ export class PostService {
 
   getPosts(): Observable<Post[]> {
 
-    /*=========================================================================|
-    | Pink Path                                                                |
-    |==========================================================================|
-    | Pide al servidor que te retorne los posts ordenados de más reciente a    |
-    | menos, teniendo en cuenta su fecha de publicación. Filtra también        |
-    | aquellos que aún no están publicados, pues no deberían mostrarse al      |
-    | usuario.                                                                 |
-    |                                                                          |
-    | En la documentación de 'JSON Server' tienes detallado cómo hacer el      |
-    | filtro y ordenación de los datos en tus peticiones, pero te ayudo        |
-    | igualmente. La querystring debe tener estos parámetros:                  |
-    |                                                                          |
-    |   - Filtro por fecha de publicación: publicationDate_lte=fecha           |
-    |   - Ordenación: _sort=publicationDate&_order=DESC                        |
-    |                                                                          |
-    | Una pista más, por si acaso: HttpParams.                                 |
-    |=========================================================================*/
+    // Almacenamos la fecha actual del sistema para realizar la comparacion.
+    const fechaActual: string = String(Date.now());
 
-    return this._http.get<Post[]>(`${environment.backendUri}/posts?_sort=publicationDate&_order=DESC  `);
+    // Creamos un objeto de opciones que le pasaremos a la peticion GET.
+    const opciones = {
+      params: new HttpParams()
+      .set('publicationDate_lte', fechaActual)
+      .set('_sort','publicationDate')
+      .set('_order','desc')
+    }
+
+    // Se realia la petición de Post's con las opciones de filtrado y ordenación establecidas.
+    return this._http.get<Post[]>(`${environment.backendUri}/posts`, opciones);
   }
 
   getUserPosts(id: number): Observable<Post[]> {
