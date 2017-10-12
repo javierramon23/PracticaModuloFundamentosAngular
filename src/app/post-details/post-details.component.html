@@ -5,12 +5,8 @@
     </div>
     <div class="author">
 
-      <!--=======================================================================|
-      | Red Path                                                                 |
-      |==========================================================================|
-      | Un clic sobre el autor debería navegar a su colección de posts.          |
-      |========================================================================-->
-      <span class="name blink-font">{{ post.author.name }}</span>
+      <!-- Añadimos un evento 'click' al nombre del autor -->
+      <span class="name blink-font" (click)= "verPostsAutor(post.author.id)">{{ post.author.name }}</span>
       
       <!-- Aplicamos el PIPE fromNow que hemos implementado -->
       <span class="date">{{ post.publicationDate | fromNow }}</span>

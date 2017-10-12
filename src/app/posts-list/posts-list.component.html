@@ -1,15 +1,12 @@
-
-<!--=======================================================================|
-| Red Path                                                                 |
-|==========================================================================|
-| Suscribe el componente PostPreviewComponent al evento que hayas definido |
-| en él para notificar los clics sobre los autores de los posts.           |
-|========================================================================-->
-
 <!-- Suscribimos el componente al evento 'postPulsado' que ha generado el hijo 
 y le asignamos el manejador 'verDetallePost($event)',tambien recibe lo que el hijo
-le haya enviado gracias a '$event', en este caso il ID del post pulsado -->
+le haya enviado gracias a '$event', en este caso el ID del post pulsado -->
+
+<!-- Suscribimos el componente al evento 'autorPulsado' que ha generado el hijo 
+y le asignamos el manejador 'verAutorPost($event)',tambien recibe lo que el hijo
+le haya enviado gracias a '$event', en este caso el ID del autor pulsado -->
 <app-post-preview *ngFor="let post of posts" 
     [post]="post"
-    (postPulsado)="verDetallePost($event)" >
+    (postPulsado)="verDetallePost($event)"
+    (autorPulsado)="verAutorPost($event)"  >
 </app-post-preview>

@@ -4,12 +4,8 @@
   </div>
   <div class="author">
 
-    <!--=======================================================================|
-    | Red Path                                                                 |
-    |==========================================================================|
-    | Un clic sobre el autor debería enviar un evento al componente padre.     |
-    |========================================================================-->
-    <span class="name blink-font">{{ post.author.name }}</span>
+    <!-- Se añade un evento 'click' junto son su manejador para notificar al padre del componente -->
+    <span class="name blink-font" (click)= "notificarAutorPulsado(post.author.id)">{{ post.author.name }}</span>
 
     <!-- Aplicamos el PIPE fromNow que hemos implementado -->
     <span class="date">{{ post.publicationDate | fromNow }}</span>

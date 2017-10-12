@@ -3,6 +3,8 @@ import { ActivatedRoute } from '@angular/router';
 
 import { NativeWindow } from '../window';
 import { Post } from '../post';
+// Importamos ROUTER para poder utilizarlo en la INYECCION de DEPENDENCIAS.
+import { Router } from '@angular/router';
 
 @Component({
   templateUrl: './post-details.component.html',
@@ -14,6 +16,8 @@ export class PostDetailsComponent implements OnInit {
 
   constructor(
     private _activatedRoute: ActivatedRoute,
+    // Hacemos una INYECCION de DEPENDENCIAS para poder utilizar Router.
+    private _router: Router,
     @Inject(NativeWindow) private _window) { }
 
   ngOnInit(): void {
@@ -29,15 +33,12 @@ export class PostDetailsComponent implements OnInit {
     return text ? `<p>${text.replace(/\n/gi, '</p><p>')}</p>` : '';
   }
 
-  /*=========================================================================|
-  | Red Path                                                                 |
-  |==========================================================================|
-  | Añade un manejador que navegue a la dirección correspondiente a los      |
-  | posts del autor indicado. Recuerda que para hacer esto necesitas         |
-  | inyectar como dependencia el Router de la app. La ruta a navegar es      |
-  | '/posts/users', pasando como parámetro el identificador del autor.       |
-  |=========================================================================*/
-
+  // Se añade un manejador para el evento 'click' para navegar hasta la direccion
+  // de los post del autor, pasamos el ID del autor para poder mostrar solo los que
+  // correspondan al autor indicado.
+  verPostsAutor(autorID: number): void{
+    this._router.navigate([`/posts/users/${autorID}`]);
+  }
   /*=========================================================================|
   | Yellow Path                                                              |
   |==========================================================================|

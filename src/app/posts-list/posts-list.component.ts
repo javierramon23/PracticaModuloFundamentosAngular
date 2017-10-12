@@ -17,20 +17,15 @@ export class PostsListComponent {
   // Inyectamos como dependencia 'Router' para poder realizar la navegación.
   constructor (private _router: Router) { }
 
-  /*=========================================================================|
-  | Red Path                                                                 |
-  |==========================================================================|
-  | Maneja el evento del componente PostPreviewComponent que indica la       |
-  | selección del autor de un post y navega a la dirección correspondiente.  |
-  | Recuerda que para hacer esto necesitas inyectar como dependencia el      |
-  | Router de la app. La ruta a navegar es '/posts/users', pasando como      |
-  | parámetro el identificador del autor.                                    |
-  |=========================================================================*/
-
   // Implementamos el manejador del evento que se ejecutara cuando se reciba el click.
   verDetallePost(postID: number):void {
     // Navegamos a la dirección '/post/' más el ID del post seleccionado.
     this._router.navigate([`/posts/${postID}`]);
+  }
+  // Implementamos el manejador del evento que se ejecutara cuando se reciba el click.
+  verAutorPost(userID: number):void {
+    // Navegamos a la dirección '/post/users' más el ID del autor seleccionado.
+    this._router.navigate([`/posts/users/${userID}`]);
   }
 
 }
