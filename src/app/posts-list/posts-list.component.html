@@ -8,5 +8,5 @@ le haya enviado gracias a '$event', en este caso el ID del autor pulsado -->
 <app-post-preview *ngFor="let post of posts" 
     [post]="post"
     (postPulsado)="verDetallePost($event)"
-    (autorPulsado)="verAutorPost($event)"  >
+    (autorPulsado)="verAutorPost($event)">
 </app-post-preview>

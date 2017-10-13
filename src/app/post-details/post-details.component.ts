@@ -36,7 +36,7 @@ export class PostDetailsComponent implements OnInit {
   // Se añade un manejador para el evento 'click' para navegar hasta la direccion
   // de los post del autor, pasamos el ID del autor para poder mostrar solo los que
   // correspondan al autor indicado.
-  verPostsAutor(autorID: number): void{
+  verPostsAutor(autorID: number): void {
     this._router.navigate([`/posts/users/${autorID}`]);
   }
   /*=========================================================================|
@@ -48,5 +48,8 @@ export class PostDetailsComponent implements OnInit {
   | '/posts/categories', pasando como parámetro el identificador de la       |
   | categoría.                                                               |
   |=========================================================================*/
+  verPostCategoria(categoriaID: number): void {
+    this._router.navigate([`/posts/categories/${categoriaID}`]);
+  }
 
 }
