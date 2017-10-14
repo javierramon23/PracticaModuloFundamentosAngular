@@ -21,12 +21,8 @@
   <hr>
   <div class="html-text" [innerHtml]="plainTextToHtml(post.body)"></div>
 
-  <!--=======================================================================|
-  | Yellow Path                                                              |
-  |==========================================================================|
-  | Suscribe el componente CategoryBoxComponent al evento que hayas definido |
-  | en él para notificar los clics sobre las categorías del post.            |
-  |========================================================================-->
+  <!--  El componente padre esta preparado para 'atender' al avento que ha generado el hijo cuando
+  se pulsa sobre una categoria, este recoge los datos que le ha enviado el hijo -->
   <app-category-box [categories]="post.categories"
   (categoriaPulsada)="verPostCategoria($event)"></app-category-box>
 

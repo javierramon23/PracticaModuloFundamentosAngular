@@ -19,19 +19,13 @@ export class PostsResolveService implements Resolve<Post[]> {
       return this._postService.getUserPosts(route.params.userId);
     }
 
-    /*=========================================================================|
-    | Yellow Path                                                              |
-    |==========================================================================|
-    | Modifica este Resolve para que, en caso de tener que obtener los posts   |
-    | correspondientes a una categoría, llame a la función 'getCategoryPosts()'|
-    | del servicio PostService. Recuerda mirar en los parámetros de la ruta, a |
-    | ver qué encuentras.                                                      |
-    |=========================================================================*/
+    // Si la ruta de navegacion contiene un parametro que identifica la categoria
+    // realizamos una consulta al servidor distinta a la que se realiza por defecto.
     if(route.params.categoryId) {
       return this._postService.getCategoryPosts(route.params.categoryId);
     }
 
-    //
+    // Peticion al servidor por defecto que devolverá el conjunto de Post's.
     return this._postService.getPosts();
   }
 

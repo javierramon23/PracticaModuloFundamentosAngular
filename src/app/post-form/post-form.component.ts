@@ -1,5 +1,7 @@
 import { Component, EventEmitter, Output } from '@angular/core';
-import { FormGroup, FormBuilder } from '@angular/forms';
+
+// Importamos 'Vallidators' para poder utilizarlo en nustro formulario.
+import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 
 import { Post } from '../post';
 import { User } from '../user';
@@ -22,17 +24,17 @@ export class PostFormComponent {
       this.createForm();
     }
 
-  private createForm() {
+  private createForm(): void {
 
-    /*=========================================================================|
-    | Purple Path                                                              |
-    |==========================================================================|
-    | Define para este FormGroup los objetos FormControl correspondientes a    |
-    | las propiedades 'title', 'intro' y 'body' de los posts. Los dos primeros |
-    | son obligatorios, así que recuerda añadir el validador oportuno.         |
-    |=========================================================================*/
-
-    this.postForm = this._formBuilder.group({});
+    // Se define el FormGroup donde indicamos en un objeto JSON las distintas propiedades
+    // que se recogeran en el formulario HTML.
+    // Se incluyen 'Validadores' a los campos necesarios para evitar problemas a la hora
+    // de rellenar el formulario.
+    this.postForm = this._formBuilder.group({
+      title:['', Validators.required],
+      intro:['', Validators.required],
+      body:''
+    });
   }
 
   emitPostSubmitted(): void {

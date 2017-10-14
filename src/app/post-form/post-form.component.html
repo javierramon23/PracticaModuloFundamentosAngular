@@ -1,47 +1,34 @@
-<!--=======================================================================|
-| Purple Path                                                              |
-|==========================================================================|
-| Enlaza el submit del formulario con la función 'emitPostSubmitted()'.    |
-|========================================================================-->
-<form [formGroup]="postForm" novalidate>
-
-  <!--=======================================================================|
-  | Purple Path                                                              |
-  |==========================================================================|
-  | Enlaza el input con el control 'title' definido en el FormGroup.         |
-  |========================================================================-->
+<!-- Utilizamos 'ngSubmit' para enlazar el 'submit' del formulario con su función -->
+<form 
+[formGroup]="postForm" novalidate
+(ngSubmit)="emitPostSubmitted()"
+>
+  <!-- Utilizamos 'formControlName' para enlazar los distintos campos del formulario
+  con los controles definidos en ell FormGroup -->
+ 
   <input
     type="text"
+    formControlName="title"
     placeholder="Título"
     class="u-full-width">
 
-  <!--=======================================================================|
-  | Purple Path                                                              |
-  |==========================================================================|
-  | Enlaza el textarea con el control 'intro' definido en el FormGroup.      |
-  |========================================================================-->
   <textarea
+    formControlName="intro"
     placeholder="Introduce tu historia"
     class="u-full-width georgia-font"
     autogrow></textarea>
 
-  <!--=======================================================================|
-  | Purple Path                                                              |
-  |==========================================================================|
-  | Enlaza el textarea con el control 'body' definido en el FormGroup.       |
-  |========================================================================-->
   <textarea
+    formControlName="body"
     placeholder="Cuenta tu historia"
     class="u-full-width georgia-font"
     autogrow></textarea>
 
-  <!--=======================================================================|
-  | Purple Path                                                              |
-  |==========================================================================|
-  | Deshabilita el botón 'Publicar' si el formulario no es válido.           |
-  |========================================================================-->
+  <!-- Utilizamos 'disabled' junto con la funcion 'invalid' para deshabilitar el boton
+  en el caso de que el formulario no este correctamente rellenado -->
   <button
     type="submit"
+    [disabled]="postForm.invalid"
     class="button-primary u-pull-right">Publicar</button>
 
 </form>

@@ -65,8 +65,11 @@ export class PostService {
 
      return this._http
       .get<Post[]>(`${environment.backendUri}/posts`, opciones)
+      // Utilizamos la función MAP que proporciona RxJS para realizar un 'FILTRADO' de la colección de Post's
+      // de manera que vamos a crear una coleccion de Post's 'nueva' que solo incluya aquellos cuyo atributo 'categories'
+      // incluya una con el mismo ID que le llega desde 'fuera'.
       .map(function(posts: Post[]): Post[]{
-        let postFiltrados: Post[];
+        let postFiltrados: Post[] = [];
         for(let indexPost = 0; indexPost < posts.length; indexPost ++){         
           for(let indexCategories = 0; indexCategories < posts[indexPost].categories.length; indexCategories ++){
             if(posts[indexPost].categories[indexCategories].id == id){
@@ -84,18 +87,9 @@ export class PostService {
   }
 
   createPost(post: Post): Observable<Post> {
-
-    /*=========================================================================|
-    | Purple Path                                                              |
-    |==========================================================================|
-    | Utiliza el cliente HTTP para guardar en servidor el post indicado. La    |
-    | ruta sobre la cual tienes que hacer la petición POST es '/posts'.        |
-    | Recuerda que siempre que se crea una entidad en servidor es una buena    |
-    | práctica retornar la misma con los datos actualizados obtenidos tras la  |
-    | inserción.                                                               |
-    |=========================================================================*/
-
-    return null;
+    // Realizamos la peticion de inserción al servidor, a la dirección del recurso,
+    // pasando en la solicitud el post que se ha definido con los datos introducidos en el formulario.
+    return this._http.post<Post>(`${environment.backendUri}/posts`,post);
   }
 
 }

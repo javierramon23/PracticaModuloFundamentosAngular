@@ -1,4 +1,4 @@
-//
+// Se importa EventEmitter para poder utilizarlo.
 import { Component, Input, Output, EventEmitter } from '@angular/core';
 
 import { Category } from '../category';
@@ -12,18 +12,11 @@ export class CategoryBoxComponent {
 
   @Input() categories: Category[];
 
-  /*=========================================================================|
-  | Yellow Path                                                              |
-  |==========================================================================|
-  | Expón un atributo de salida con el decorador correspondiente. El tipo de |
-  | dicho atributo debe permitir la emisión de eventos; la idea es enviar al |
-  | componente padre la categoría sobre el cuál se ha hecho clic. Y puesto   |
-  | que dicho clic se realiza en el template de este componente, necesitas,  |
-  | además, un manejador para el mismo.                                      |
-  |=========================================================================*/
-  //
+  // Decoramos un atributo para poder realizar la emision del evento del hijo al padre.
   @Output() categoriaPulsada: EventEmitter<number> = new EventEmitter<number>();
-  //
+  
+  // Manejador del evento 'click' del template que emite un evento para enviar al padra el
+  // ID de la categoria pulsada.
   notificarCategoriaPulsada(categoriaID: number): void {
     console.log(categoriaID);
     this.categoriaPulsada.emit(categoriaID);

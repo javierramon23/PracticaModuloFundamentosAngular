@@ -1,10 +1,5 @@
 <div>
-
-  <!--=======================================================================|
-  | Yellow Path                                                              |
-  |==========================================================================|
-  | Un clic sobre la categoría debería enviar un evento al componente padre. |
-  |========================================================================-->
+  <!-- Se añade un evento 'click' para notificar que se ha pulsado la categoria del Post -->
   <span class="blink-font" *ngFor="let category of categories"
     (click)= "notificarCategoriaPulsada(category.id)">
     {{ category.name }}

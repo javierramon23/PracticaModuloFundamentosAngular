@@ -39,15 +39,8 @@ export class PostDetailsComponent implements OnInit {
   verPostsAutor(autorID: number): void {
     this._router.navigate([`/posts/users/${autorID}`]);
   }
-  /*=========================================================================|
-  | Yellow Path                                                              |
-  |==========================================================================|
-  | Añade un manejador que navegue a la dirección correspondiente a los      |
-  | posts de la categoría indicada. Recuerda que para hacer esto necesitas   |
-  | inyectar como dependencia el Router de la app. La ruta a navegar es      |
-  | '/posts/categories', pasando como parámetro el identificador de la       |
-  | categoría.                                                               |
-  |=========================================================================*/
+  
+  // Manejador del componente padre que hace una navegación a una ruta definida.
   verPostCategoria(categoriaID: number): void {
     this._router.navigate([`/posts/categories/${categoriaID}`]);
   }

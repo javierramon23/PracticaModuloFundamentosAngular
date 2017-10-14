@@ -280,6 +280,38 @@
         2
       ],
       "id": 10
+    },
+    {
+      "title": "jhjhh",
+      "intro": "jhjhjhj",
+      "body": "jhjhjhjhj",
+      "likes": [],
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
+      "publicationDate": 1507949058152,
+      "id": 11
+    },
+    {
+      "title": "Una Historia Importante",
+      "intro": "Este es el comienzo de una bonita...",
+      "body": "Este es el comienzo de una bonita amistad que aparece sin que nadie se lo espere.",
+      "likes": [],
+      "categories": [],
+      "author": {
+        "id": 1,
+        "name": "KeepCoder",
+        "username": "keepcoder",
+        "email": "keepcoder@postium.com",
+        "avatar": "assets/images/keepcoder.jpg"
+      },
+      "publicationDate": 1507949925765,
+      "id": 12
     }
   ],
   "categories": [
